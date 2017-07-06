@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="custom.css">
+    <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/css/uikit.min.css" />
+
+
+
+  </head>
+    <body>
+<main id="container">
+  <div uk-grid class="uk-child-width-expand@s">
+   <div class="uk-width-1-4@m">
+     <div class="uk-card uk-card-default uk-card-body" style="z-index: 980;" uk-sticky="bottom: #offset">
+       <div id="nav-height-container">
+         <div class="sidebar-items" id="home-button"><span uk-icon="icon: home; ratio: .8"></span> Home</div>
+         <div class="sidebar-items" id="install-phaser-button"><span uk-icon="icon: download; ratio: .8"></span> Install Phaser (& Run it locally)</div>
+         <div class="sidebar-items" id="loading-sprites-button"><span uk-icon="icon: happy; ratio: .8"></span> Loading  Sprites</div>
+         <div class="sidebar-items" id="anchor-points-button"><span uk-icon="icon: nut; ratio: .8"></span> Anchor Points</div>
+         <div class="sidebar-items" id="scaling-button"><span uk-icon="icon: expand; ratio: .8"></span> Scaling</div>
+         <div class="sidebar-items" id="flipping-button"><span uk-icon="icon: reply; ratio: .8"></span> Flipping</div>
+         <div class="sidebar-items" id="rotating-button"><span uk-icon="icon: refresh; ratio: .8"></span> Rotating</div>
+         <div class="sidebar-items" id="screen-scaling-button"><span uk-icon="icon: desktop; ratio: .8"></span> Screen Scaling</div>
+         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Switching Items</div>
+         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Tween Animations</div>
+         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Tween Callback</div>
+         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Spritesheet Animations</div>
+         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Audacity Basics</div>
+         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Adding sound</div>
+         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Adding Text</div>
+         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Where to find free artwork</div>
+     </div>
+
+
+
+
+
+
+
+       <p style="font-size: 12px">This tutorial is based on: <br><a href="https://phaser.io/download/stable"> Phaser Version 2.8.1 <span uk-icon="icon: link; ratio: .8"></span></a></p>
+     </div>
+   </div>
+
+   <div class="uk-width-3-4@m">
+     <div id="home">
+       <h1>Phaser Game tutorial</h1>
+       <h3>Learn how to raplidy build HTML5 games from scratch with popular game engine Phaser. </h3>
+       <h4>Author: <a href="https://ericwallen.tech">Eric Wallen</a></h4>
+         Hello! Welcome to this tutorial and intro to Phaser. With this powerful library you can build HTML5 JavaScript based 2d games for the browser very quickly. Playing games is a fun activity if there ever was one. I think we can all agree to that? Creating games, believe it or not, can be even more enjoyable! You really get to own it and that is so …. satisfying. Are you ready to do this!? Ask your self a few questions to determine if we have a good fit. First, do you know a little JavaScript or have coded in some language even just HTML or CSS? Have you touched the command line/prompt once or more and understand how to launch it? Great! Then you will be just fine. If you have some illustrator or design knowledge that can also be helpful but I will supply you all my images so that you can worry about skinning your game the way you want to later. Sound good? In essence this tutorial is meant to be from step one so no previous knowledge about phaser is required. Ok, lets go!
+       <img src="phaser-logo.png" alt=""><br><br>
+       <img src="http://via.placeholder.com/1920x1080">
+     </div>
+     <div id="install-phaser">
+       <h1><span uk-icon="icon: download; ratio: 2.5"></span> Install Phaser (& Run it locally)</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+
+       <pre class="prettyprint">npm install http-server -g</pre>
+       <pre class="prettyprint">http-server</pre>
+       <pre class="prettyprint">mkdir city-sounds-game</pre>
+       <pre class="prettyprint">cd city-sounds-game</pre>
+       <pre class="prettyprint">touch index.html</pre>
+       <pre class="prettyprint">mkdir assets assets/images assets/sounds assets/js</pre>
+       <pre class="prettyprint">touch assets/js/main.js</pre>
+
+
+       <pre class="prettyprint lang-html"><xmp><!DOCTYPE html>
+       <html>
+         <head>
+           <meta charset="utf-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+           <title>Games</title>
+           <script src="js/phaser.js" charset="utf-8"></script>
+         </head>
+         <style>
+           body{
+             padding: 0px;
+             margin: 0px;
+             background: black;
+           }
+         </style>
+         <body>
+
+           <script src="js/main.js" charset="utf-8"></script>
+         </body>
+       </html>
+</xmp></pre>
+
+
+<pre class="prettyprint">
+  var game = new Phaser.Game(1920, 1080, Phaser.Auto);
+
+  var GameState = {
+    preload: function(){
+
+    },
+    create: function(){
+
+    },
+    update: function(){
+
+    }
+  };
+
+  game.state.add('GameState', GameState);
+  game.state.start('GameState');
+</pre>
+
+
+
+     </div>
+     <div id="loading-sprites">
+       <h1><span uk-icon="icon: happy; ratio: 2.5"></span> Loading  Sprites</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+       <pre class="prettyprint">this.load.image('backgroundImageKey', 'assets/images/background.png');
+this.load.image('dogImageKey', 'assets/images/dog.png');
+this.load.image('airplaneImageKey', 'assets/images/airplane.png');
+this.load.image('iceSkatingImageKey', 'assets/images/ice-skating.png');
+this.load.image('fireTruckeKey', 'assets/images/fire-truck.png');
+this.load.image('arrowImageKey', 'assets/images/right-arrow.png');
+this.load.image('leftArrowImageKey', 'assets/images/left-arrow.png');</pre>
+       <pre class="prettyprint">this.background = this.game.add.sprite(0, 0, 'background');</pre>
+       </div>
+
+     <div id="anchor-points">
+       <h1><span uk-icon="icon: nut; ratio: 2.5"></span> Anchor Points</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+     </div>
+     <div id="scaling">
+       <h1><span uk-icon="icon: expand; ratio: 2.5"></span> Scaling</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+     </div>
+     <div id="flipping">
+       <h1><span uk-icon="icon: reply; ratio: 2.5"></span> Flipping</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+     </div>
+     <div id="rotating">
+       <h1><span uk-icon="icon: refresh; ratio: 2.5"></span> Rotating</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+     </div>
+     <div id="screen-scaling">
+       <h1><span uk-icon="icon: desktop; ratio: 2.5"></span> Screen Scaling</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+     </div>
+   </div>
+ </div>
+</main>
+
+<script
+src="https://code.jquery.com/jquery-3.2.1.js"
+integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+crossorigin="anonymous"></script>
+<!-- jQuery is required -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- UIkit JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit-icons.min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>

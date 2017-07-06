@@ -1,0 +1,24 @@
+#container{
+  max-width: 1000px;
+  margin: auto;
+  padding: 10px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: 0px solid #CCC;
+}
+
+.sidebar-items{
+  margin-bottom: 20px;
+  width: 100%;
+  color: red;
+  font-size: 11px;
+  cursor: pointer;
+}
+.pretty-print{
+  word-wrap: break-word;
+}
+
+#nav-height-container{
+  height: 35vh;
+  overflow: scroll;
+}

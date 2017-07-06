@@ -9,11 +9,11 @@ Hello! Welcome to this tutorial and intro to Phaser. With this powerful library 
 
 ## What will you learn?
 
-#### Install Phaser and Run it locally
+#### Install Phaser (& Run it locally)
 
-#### Loading  Sprite
+#### Loading  Sprites
 
-#### Anchor Point
+#### Anchor Points
 
 #### Scaling
 

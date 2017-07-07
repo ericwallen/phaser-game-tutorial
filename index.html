@@ -21,17 +21,12 @@
          <div class="sidebar-items" id="loading-sprites-button"><span uk-icon="icon: happy; ratio: .8"></span> Loading  Sprites</div>
          <div class="sidebar-items" id="anchor-points-button"><span uk-icon="icon: nut; ratio: .8"></span> Anchor Points</div>
          <div class="sidebar-items" id="scaling-button"><span uk-icon="icon: expand; ratio: .8"></span> Scaling</div>
-         <div class="sidebar-items" id="flipping-button"><span uk-icon="icon: reply; ratio: .8"></span> Flipping</div>
-         <div class="sidebar-items" id="rotating-button"><span uk-icon="icon: refresh; ratio: .8"></span> Rotating</div>
+         <!-- <div class="sidebar-items" id="rotating-button"><span uk-icon="icon: refresh; ratio: .8"></span> Rotating</div> -->
          <div class="sidebar-items" id="screen-scaling-button"><span uk-icon="icon: desktop; ratio: .8"></span> Screen Scaling</div>
-         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Switching Items</div>
-         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Tween Animations</div>
-         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Tween Callback</div>
-         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Spritesheet Animations</div>
-         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Audacity Basics</div>
-         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Adding sound</div>
-         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Adding Text</div>
-         <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Where to find free artwork</div>
+         <div class="sidebar-items" id="switching-items-button"><span uk-icon="icon: move; ratio: .8"></span> Switching Items</div>
+         <div class="sidebar-items" id="adding-sound-button"><span uk-icon="icon: play-circle; ratio: .8"></span> Adding Sound</div>
+         <!-- <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Adding Text</div> -->
+
      </div>
 
 
@@ -62,7 +57,8 @@
        <pre class="prettyprint">mkdir city-sounds-game</pre>
        <pre class="prettyprint">cd city-sounds-game</pre>
        <pre class="prettyprint">touch index.html</pre>
-       <pre class="prettyprint">mkdir assets assets/images assets/sounds assets/js</pre>
+       <pre class="prettyprint">mkdir assets</pre>
+       <pre class="prettyprint">mkdir assets/images assets/sounds assets/js</pre>
        <pre class="prettyprint">touch assets/js/main.js</pre>
 
 
@@ -72,7 +68,7 @@
            <meta charset="utf-8">
            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
            <title>Games</title>
-           <script src="js/phaser.js" charset="utf-8"></script>
+           <script src="assets/js/phaser.js" charset="utf-8"></script>
          </head>
          <style>
            body{
@@ -83,7 +79,7 @@
          </style>
          <body>
 
-           <script src="js/main.js" charset="utf-8"></script>
+           <script src="assets/js/main.js" charset="utf-8"></script>
          </body>
        </html>
 </xmp></pre>
@@ -115,26 +111,32 @@
        <h1><span uk-icon="icon: happy; ratio: 2.5"></span> Loading  Sprites</h1>
        <img src="http://via.placeholder.com/1920x1080">
        <pre class="prettyprint">this.load.image('backgroundImageKey', 'assets/images/background.png');
-this.load.image('dogImageKey', 'assets/images/dog.png');
-this.load.image('airplaneImageKey', 'assets/images/airplane.png');
-this.load.image('iceSkatingImageKey', 'assets/images/ice-skating.png');
-this.load.image('fireTruckeKey', 'assets/images/fire-truck.png');
-this.load.image('arrowImageKey', 'assets/images/right-arrow.png');
-this.load.image('leftArrowImageKey', 'assets/images/left-arrow.png');</pre>
-       <pre class="prettyprint">this.background = this.game.add.sprite(0, 0, 'background');</pre>
+this.load.image('rightArrowImageKey', 'assets/images/right-arrow.png');
+this.load.image('leftArrowImageKey', 'assets/images/left-arrow.png');
+
+this.load.spritesheet('dogImageKey', 'assets/images/dog-spritesheet.png', 400, 400, 3);
+this.load.spritesheet('iceSkatingImageKey', 'assets/images/ice-skating-spritesheet.png', 400, 400, 3);
+this.load.spritesheet('airplaneImageKey', 'assets/images/airplane-spritesheet.png', 400, 400, 3);
+this.load.spritesheet('fireTruckKey', 'assets/images/fire-truck-spritesheet.png', 400, 400, 3);</pre>
+         <pre class="prettyprint">this.background = this.game.add.sprite(0, 0, 'background');
+this.leftArrowSprite = this.game.add.sprite(100, this.game.world.centerY, 'leftArrowImageKey');
+this.rightArrowSprite = this.game.add.sprite(1820, this.game.world.centerY, 'rightArrowImageKey');</pre>
        </div>
 
      <div id="anchor-points">
        <h1><span uk-icon="icon: nut; ratio: 2.5"></span> Anchor Points</h1>
        <img src="http://via.placeholder.com/1920x1080">
+<pre class="prettyprint">this.leftArrowSprite.anchor.setTo(0.5);</pre>
+<pre class="prettyprint">this.rightArrowSprite.anchor.setTo(0.5);</pre>
+
+
      </div>
      <div id="scaling">
        <h1><span uk-icon="icon: expand; ratio: 2.5"></span> Scaling</h1>
        <img src="http://via.placeholder.com/1920x1080">
-     </div>
-     <div id="flipping">
-       <h1><span uk-icon="icon: reply; ratio: 2.5"></span> Flipping</h1>
-       <img src="http://via.placeholder.com/1920x1080">
+<pre class="prettyprint">this.leftArrowSprite.scale.setTo(1.5, 1.5);</pre>
+<pre class="prettyprint">this.rightArrowSprite.scale.setTo(1.5, 1.5);</pre>
+
      </div>
      <div id="rotating">
        <h1><span uk-icon="icon: refresh; ratio: 2.5"></span> Rotating</h1>
@@ -143,6 +145,119 @@ this.load.image('leftArrowImageKey', 'assets/images/left-arrow.png');</pre>
      <div id="screen-scaling">
        <h1><span uk-icon="icon: desktop; ratio: 2.5"></span> Screen Scaling</h1>
        <img src="http://via.placeholder.com/1920x1080">
+<pre class="prettyprint">//scales game responsively to screen size
+this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+//have game align horizantally and vertically
+this.scale.pageAlignHorizontally = true;
+this.scale.pageAlignVertically = true;</pre>
+
+
+     </div>
+     <div id="switching-items">
+       <h1><span uk-icon="icon: move; ratio: 2.5"></span> Switching Items</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+<pre class="prettyprint">//Group Items & Switch Between Them
+var cityItemData = [
+ {key: 'dogImageKey', text: 'Doggy', audio: 'dogSoundKey'},
+ {key: 'iceSkatingImageKey', text: 'Ice Skating', audio: 'iceSkatingSoundKey'},
+ {key: 'fireTruckKey', text: 'Fire Truck', audio: 'fireTruckSoundKey'},
+ {key: 'airplaneImageKey', text: 'Airplane', audio: 'airplaneSoundKey'}
+];
+
+this.cityItems = this.game.add.group();
+
+var self = this;
+var cityItem;
+
+cityItemData.forEach(function(element){
+ cityItem = self.cityItems.create(-1200, self.game.world.centerY, element.key, 0);
+
+ cityItem.customParams = {text: element.text, sound: self.game.add.audio(element.audio)};
+ cityItem.anchor.setTo(0.5);
+
+ //create item animation
+ cityItem.animations.add('animate', [0,1,2,0,1,2,0], 3, false)
+
+ cityItem.inputEnabled = true;
+ cityItem.input.pixelPerfectClick = true;
+ cityItem.events.onInputDown.add(self.itemAnimate, self);
+});
+
+this.currentItem = this.cityItems.next();
+this.currentItem.position.set(self.game.world.centerX, self.game.world.centerY);
+
+this.leftArrowSprite = this.game.add.sprite(100, this.game.world.centerY, 'leftArrowImageKey');
+this.leftArrowSprite.anchor.setTo(0.5);
+this.leftArrowSprite.scale.setTo(1, 1);
+this.leftArrowSprite.customParams = {direction: -1};
+this.leftArrowSprite.inputEnabled = true;
+this.leftArrowSprite.input.pixelPerfectClick = true;
+this.leftArrowSprite.events.onInputDown.add(this.switchItem, this);
+
+this.rightArrowSprite = this.game.add.sprite(1820, this.game.world.centerY, 'rightArrowImageKey');
+this.rightArrowSprite.anchor.setTo(0.5);
+this.rightArrowSprite.scale.setTo(1, 1);
+this.rightArrowSprite.customParams = {direction: 1};
+this.rightArrowSprite.inputEnabled = true;
+this.rightArrowSprite.input.pixelPerfectClick = true;
+this.rightArrowSprite.events.onInputDown.add(this.switchItem, this);</pre>
+<pre class="prettyprint">// Switch City Items
+  switchItem: function(sprite, event){
+    console.log('move item');
+
+    var newItem, endX;
+
+    if(sprite.customParams.direction > 0){
+      newItem = this.cityItems.next();
+      newItem.x = 1920;
+      endX = -500;
+    } else {
+      newItem = this.cityItems.previous();
+      newItem.x = 1920;
+      endX = -500;
+    }
+
+    this.currentItem.x = endX;
+    newItem.x = this.game.world.centerX;
+    this.currentItem = newItem;
+    },
+
+
+  itemAnimate: function(sprite, event){
+    console.log('I am anmimated')
+    sprite.play('animate');
+    sprite.customParams.sound.play(false);
+
+  },</pre>
+
+
+     </div>
+     <div id="adding-sound">
+       <h1><span uk-icon="icon: play-circle; ratio: 2.5"></span> Adding Sound</h1>
+       <img src="http://via.placeholder.com/1920x1080">
+
+<pre class="prettyprint">var cityItemData = [
+{key: 'dogImageKey', text: 'Doggy', audio: 'dogSoundKey'},
+{key: 'iceSkatingImageKey', text: 'Ice Skating', audio: 'iceSkatingSoundKey'},
+{key: 'fireTruckKey', text: 'Fire Truck', audio: 'fireTruckSoundKey'},
+{key: 'airplaneImageKey', text: 'Airplane', audio: 'airplaneSoundKey'}
+       ];</pre>
+
+
+<pre class="prettyprint">this.load.audio('dogSoundKey', 'assets/sounds/dog.m4a');
+this.load.audio('iceSkatingSoundKey', 'assets/sounds/ice-skating.m4a');
+this.load.audio('airplaneSoundKey', 'assets/sounds/airplane.m4a');
+this.load.audio('fireTruckSoundKey', 'assets/sounds/fire-truck.m4a');</pre>
+
+<pre class="prettyprint">itemAnimate: function(sprite, event){
+console.log('I am anmimated')
+sprite.play('animate');
+sprite.customParams.sound.play(false);
+},</pre>
+
+
+
      </div>
    </div>
  </div>

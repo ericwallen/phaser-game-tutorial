@@ -19,20 +19,14 @@
          <div class="sidebar-items" id="home-button"><span uk-icon="icon: home; ratio: .8"></span> Home</div>
          <div class="sidebar-items" id="install-phaser-button"><span uk-icon="icon: download; ratio: .8"></span> Install Phaser (& Run it locally)</div>
          <div class="sidebar-items" id="loading-sprites-button"><span uk-icon="icon: happy; ratio: .8"></span> Loading  Sprites</div>
+         <div class="sidebar-items" id="screen-scaling-button"><span uk-icon="icon: desktop; ratio: .8"></span> Screen Scaling</div>
          <div class="sidebar-items" id="anchor-points-button"><span uk-icon="icon: nut; ratio: .8"></span> Anchor Points</div>
          <div class="sidebar-items" id="scaling-button"><span uk-icon="icon: expand; ratio: .8"></span> Scaling</div>
          <!-- <div class="sidebar-items" id="rotating-button"><span uk-icon="icon: refresh; ratio: .8"></span> Rotating</div> -->
-         <div class="sidebar-items" id="screen-scaling-button"><span uk-icon="icon: desktop; ratio: .8"></span> Screen Scaling</div>
-         <div class="sidebar-items" id="switching-items-button"><span uk-icon="icon: move; ratio: .8"></span> Switching Items</div>
+                  <div class="sidebar-items" id="switching-items-button"><span uk-icon="icon: move; ratio: .8"></span> Switching Items</div>
          <div class="sidebar-items" id="adding-sound-button"><span uk-icon="icon: play-circle; ratio: .8"></span> Adding Sound</div>
          <!-- <div class="sidebar-items" id=""><span uk-icon="icon: desktop; ratio: .8"></span> Adding Text</div> -->
-
      </div>
-
-
-
-
-
 
 
        <p style="font-size: 12px">This tutorial is based on: <br><a href="https://phaser.io/download/stable"> Phaser Version 2.8.1 <span uk-icon="icon: link; ratio: .8"></span></a></p>
@@ -46,7 +40,10 @@
        <h4>Author: <a href="https://ericwallen.tech">Eric Wallen</a></h4>
          Hello! Welcome to this tutorial and intro to Phaser. With this powerful library you can build HTML5 JavaScript based 2d games for the browser very quickly. Playing games is a fun activity if there ever was one. I think we can all agree to that? Creating games, believe it or not, can be even more enjoyable! You really get to own it and that is so …. satisfying. Are you ready to do this!? Ask your self a few questions to determine if we have a good fit. First, do you know a little JavaScript or have coded in some language even just HTML or CSS? Have you touched the command line/prompt once or more and understand how to launch it? Great! Then you will be just fine. If you have some illustrator or design knowledge that can also be helpful but I will supply you all my images so that you can worry about skinning your game the way you want to later. Sound good? In essence this tutorial is meant to be from step one so no previous knowledge about phaser is required. Ok, lets go!
        <img src="phaser-logo.png" alt=""><br><br>
-       <img src="http://via.placeholder.com/1920x1080">
+
+
+      <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/5SmV5dHuYn4' frameborder='0' allowfullscreen></iframe></div>
+
      </div>
      <div id="install-phaser">
        <h1><span uk-icon="icon: download; ratio: 2.5"></span> Install Phaser (& Run it locally)</h1>
@@ -66,7 +63,6 @@
        <html>
          <head>
            <meta charset="utf-8">
-           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
            <title>Games</title>
            <script src="assets/js/phaser.js" charset="utf-8"></script>
          </head>
@@ -110,18 +106,23 @@
      <div id="loading-sprites">
        <h1><span uk-icon="icon: happy; ratio: 2.5"></span> Loading  Sprites</h1>
        <img src="http://via.placeholder.com/1920x1080">
-       <pre class="prettyprint">this.load.image('backgroundImageKey', 'assets/images/background.png');
+       <pre class="prettyprint">// load a sprite for the background
+this.load.image('backgroundImageKey', 'assets/images/background.png');
+
+// load a sprite for the arrows
 this.load.image('rightArrowImageKey', 'assets/images/right-arrow.png');
 this.load.image('leftArrowImageKey', 'assets/images/left-arrow.png');
 
+// load spritesheets for the city items
 this.load.spritesheet('dogImageKey', 'assets/images/dog-spritesheet.png', 400, 400, 3);
 this.load.spritesheet('iceSkatingImageKey', 'assets/images/ice-skating-spritesheet.png', 400, 400, 3);
 this.load.spritesheet('airplaneImageKey', 'assets/images/airplane-spritesheet.png', 400, 400, 3);
 this.load.spritesheet('fireTruckKey', 'assets/images/fire-truck-spritesheet.png', 400, 400, 3);</pre>
-         <pre class="prettyprint">this.background = this.game.add.sprite(0, 0, 'background');
+
+<pre class="prettyprint">// place sprites inside the game canvas
+this.backgroundSprite = this.game.add.sprite(0, 0, 'backgroundImageKey');
 this.leftArrowSprite = this.game.add.sprite(100, this.game.world.centerY, 'leftArrowImageKey');
-this.rightArrowSprite = this.game.add.sprite(1820, this.game.world.centerY, 'rightArrowImageKey');</pre>
-       </div>
+this.rightArrowSprite = this.game.add.sprite(1820, this.game.world.centerY, 'rightArrowImageKey');</pre></div>
 
      <div id="anchor-points">
        <h1><span uk-icon="icon: nut; ratio: 2.5"></span> Anchor Points</h1>
@@ -145,6 +146,7 @@ this.rightArrowSprite = this.game.add.sprite(1820, this.game.world.centerY, 'rig
      <div id="screen-scaling">
        <h1><span uk-icon="icon: desktop; ratio: 2.5"></span> Screen Scaling</h1>
        <img src="http://via.placeholder.com/1920x1080">
+       <pre class="prettyprint lang-html"><xmp><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"></xmp></pre>
 <pre class="prettyprint">//scales game responsively to screen size
 this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
@@ -157,52 +159,71 @@ this.scale.pageAlignVertically = true;</pre>
      <div id="switching-items">
        <h1><span uk-icon="icon: move; ratio: 2.5"></span> Switching Items</h1>
        <img src="http://via.placeholder.com/1920x1080">
-<pre class="prettyprint">//Group Items & Switch Between Them
-var cityItemData = [
- {key: 'dogImageKey', text: 'Doggy', audio: 'dogSoundKey'},
- {key: 'iceSkatingImageKey', text: 'Ice Skating', audio: 'iceSkatingSoundKey'},
- {key: 'fireTruckKey', text: 'Fire Truck', audio: 'fireTruckSoundKey'},
- {key: 'airplaneImageKey', text: 'Airplane', audio: 'airplaneSoundKey'}
-];
+<pre class="prettyprint">create: function(){
+  //scales game responsively to screen size
+  //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
-this.cityItems = this.game.add.group();
+  //have game align horizantally and vertically
+  //this.scale.pageAlignHorizontally = true;
+  //this.scale.pageAlignVertically = true;
 
-var self = this;
-var cityItem;
+  // place the background sprite
+  //this.backgroundSprite = this.game.add.sprite(0, 0, 'backgroundImageKey');
 
-cityItemData.forEach(function(element){
- cityItem = self.cityItems.create(-1200, self.game.world.centerY, element.key, 0);
+  //Group Items & Switch Between Them
+ var cityItemData = [
+   {key: 'dogImageKey', text: 'Doggy', audio: 'dogSoundKey'},
+   {key: 'iceSkatingImageKey', text: 'Ice Skating', audio: 'iceSkatingSoundKey'},
+   {key: 'fireTruckKey', text: 'Fire Truck', audio: 'fireTruckSoundKey'},
+   {key: 'airplaneImageKey', text: 'Airplane', audio: 'airplaneSoundKey'}
+ ];
 
- cityItem.customParams = {text: element.text, sound: self.game.add.audio(element.audio)};
- cityItem.anchor.setTo(0.5);
+ this.cityItems = this.game.add.group();
+ var self = this; // asign this to variable self. We do this so we can access "this" inside of the cityItem funtion
+ var cityItem; // declare cityItem in global scope
 
- //create item animation
- cityItem.animations.add('animate', [0,1,2,0,1,2,0], 3, false)
+ cityItemData.forEach(function(element){ // forEach JavaScript method of iterating through array
+   cityItem = self.cityItems.create(-1200, self.game.world.centerY, element.key, 0); //assign images to cityItem variable. -1200 sets the unseen animal off the game cavas
+   cityItem.customParams = {text: element.text, sound: self.game.add.audio(element.audio)}; // add custom params ti CityItem
+   cityItem.anchor.setTo(0.5); //Set achor point to center on CityItem
+   cityItem.animations.add('animate', [0,1,2,0,1,2,0], 3, false) //create item animation on CityItem
+   cityItem.inputEnabled = true; // allow input on CityItem
+   cityItem.input.pixelPerfectClick = true; // set to pixel perfect click
+   cityItem.events.onInputDown.add(self.itemAnimate, self); // create event listener and invoke itemAnimate function on click
+ });
 
- cityItem.inputEnabled = true;
- cityItem.input.pixelPerfectClick = true;
- cityItem.events.onInputDown.add(self.itemAnimate, self);
-});
 
-this.currentItem = this.cityItems.next();
-this.currentItem.position.set(self.game.world.centerX, self.game.world.centerY);
+  this.currentItem = this.cityItems.next(); //this is using the next() method on the CityItems Group declared above
+  this.currentItem.position.set(self.game.world.centerX, self.game.world.centerY); //sets currentvitem to the center of the canvas
 
-this.leftArrowSprite = this.game.add.sprite(100, this.game.world.centerY, 'leftArrowImageKey');
-this.leftArrowSprite.anchor.setTo(0.5);
-this.leftArrowSprite.scale.setTo(1, 1);
-this.leftArrowSprite.customParams = {direction: -1};
-this.leftArrowSprite.inputEnabled = true;
-this.leftArrowSprite.input.pixelPerfectClick = true;
-this.leftArrowSprite.events.onInputDown.add(this.switchItem, this);
+  //add left arrow sprite and then configure the anchor point and scale
+  this.leftArrowSprite = this.game.add.sprite(100, this.game.world.centerY, 'leftArrowImageKey');
+  this.leftArrowSprite.anchor.setTo(0.5);
+  this.leftArrowSprite.scale.setTo(1, 1);
 
-this.rightArrowSprite = this.game.add.sprite(1820, this.game.world.centerY, 'rightArrowImageKey');
-this.rightArrowSprite.anchor.setTo(0.5);
-this.rightArrowSprite.scale.setTo(1, 1);
-this.rightArrowSprite.customParams = {direction: 1};
-this.rightArrowSprite.inputEnabled = true;
-this.rightArrowSprite.input.pixelPerfectClick = true;
-this.rightArrowSprite.events.onInputDown.add(this.switchItem, this);</pre>
-<pre class="prettyprint">// Switch City Items
+  //turn on and configure user input
+  this.leftArrowSprite.customParams = {direction: -1};
+  this.leftArrowSprite.inputEnabled = true;
+  this.leftArrowSprite.input.pixelPerfectClick = true;
+
+  //click event invokes switchItem function
+  this.leftArrowSprite.events.onInputDown.add(this.switchItem, this);
+
+
+  //add right arrow sprite and then configure the anchor point and scale
+  this.rightArrowSprite = this.game.add.sprite(1820, this.game.world.centerY, 'rightArrowImageKey');
+  this.rightArrowSprite.anchor.setTo(0.5);
+  this.rightArrowSprite.scale.setTo(1, 1);
+
+  //turn on and configure user input
+  this.rightArrowSprite.customParams = {direction: 1};
+  this.rightArrowSprite.inputEnabled = true;
+  this.rightArrowSprite.input.pixelPerfectClick = true;
+
+  //click event invokes switchItem function
+  this.rightArrowSprite.events.onInputDown.add(this.switchItem, this);
+},</pre>
+<pre class="prettyprint"> // make new object in th GameState array. Key is itemAnimate and a function that takes sprite and event is its value.
   switchItem: function(sprite, event){
     console.log('move item');
 
@@ -223,12 +244,11 @@ this.rightArrowSprite.events.onInputDown.add(this.switchItem, this);</pre>
     this.currentItem = newItem;
     },
 
-
+  // make new object in th GameState array. Key is itemAnimate and a function that takes sprite and event is its value.
   itemAnimate: function(sprite, event){
-    console.log('I am anmimated')
+    console.log('I am animated')
     sprite.play('animate');
     sprite.customParams.sound.play(false);
-
   },</pre>
 
 
